@@ -1,5 +1,5 @@
 {
-    "token": "NDU5Nzg0MDEwNDQ1NjE5MjEw.DjTmvA.J68Egl0duMhgyxXTjEfUADBLX2Q",
+    "token": process.env.token,
     "prefix": "#",
     "invite": "https://discordapp.com/api/oauth2/authorize?client_id=459784010445619210&permissions=872676417&scope=bot",
     "intro": "Hey dude! I'm a bot who can give you free, custom roles. Just give me a role to give you and you'll get it, free of all charge! To add a role, say '#add (your role here)'. If you wanna remove a role, just say '#remove (your role here)'. If you wanna invite me to your server, just say #invite. If you want a full list of roles in your server, just say #roles. Have fu, dude!",
