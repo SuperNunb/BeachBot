@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const surf = require('./surf.json');
 const fs = require("fs");
-const token = surf.token;
+const token = process.env.token;
 const prefix = surf.prefix;
 const guildList = surf.guildList;
 const bot = new Discord.Client();
