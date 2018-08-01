@@ -65,27 +65,31 @@ bot.on("message", message => {
         let colRand2 = Math.floor(Math.random() * 255 + 1);
         let colRand3 = Math.floor(Math.random() * 255 + 1);
         const cateRole = (rolNm) => {
-            if (message.channel.type == "dm") return;
-            let theRole = message.guild.roles.find('name', `${rolNm}`);
-            if (!theRole) {
-                message.guild.createRole({
-                    name: `${rolNm}`, 
-                    hoist: true, 
-                    color: [colRand1, colRand2, colRand3],
-                    mentionable: true
-                }).then(theRole => {
-                    message.member.addRole(`${theRole.id}`);
-                    message.channel.send(`${message.author}, you have been given the totally awesome new ${theRole} role. Far out!`);
-                });
-            } else if (message.member.roles.has(theRole.id)) {
-                message.channel.send(`You already have that role, ${message.author}, dude.`);
+            if (message.member.roles.array().length > 7) {
+                message.channel.send(`Dude, you have too many roles.`);
             } else {
-                /*if (!theRole.hasPermission("ADMINISTRATOR") && !theRole.hasPermission("KICK_MEMBERS") && !theRole.hasPermission("BAN_MEMBERS") && !theRole.hasPermission("MANAGE_CHANNELS") && !theRole.hasPermission("MANAGE_GUILD") && !theRole.hasPermission("MANAGE_MESSAGES") && !theRole.hasPermission("MUTE_MEMBERS") && !theRole.hasPermission("DEAFEN_MEMBERS") && !theRole.hasPermission("MOVE_MEMBERS") && !theRole.hasPermission("MANAGE_NICKNAMES") && !theRole.hasPermission("MANAGE_ROLES") && !theRole.hasPermission("MANAGE_WEBHOOKS") && !theRole.hasPermission("MANAGE_EMOJIS")) {
-                    message.member.addRole(`${theRole.id}`);
-                    message.channel.send(`${message.author}, you have been given the totally awesome ${theRole} role.`);
+                if (message.channel.type == "dm") return;
+                let theRole = message.guild.roles.find('name', `${rolNm}`);
+                if (!theRole) {
+                    message.guild.createRole({
+                        name: `${rolNm}`, 
+                        hoist: true, 
+                        color: [colRand1, colRand2, colRand3],
+                        mentionable: true
+                    }).then(theRole => {
+                        message.member.addRole(`${theRole.id}`);
+                        message.channel.send(`${message.author}, you have been given the totally awesome new ${theRole} role. Far out!`);
+                    });
+                } else if (message.member.roles.has(theRole.id)) {
+                    message.channel.send(`You already have that role, ${message.author}, dude.`);
                 } else {
-                    message.channel.send(`${message.author}, that role's permissions are too far out. Try something else.`);
-                }*/ message.channel.send(`Try making a custom role, dude.`);
+                    /*if (!theRole.hasPermission("ADMINISTRATOR") && !theRole.hasPermission("KICK_MEMBERS") && !theRole.hasPermission("BAN_MEMBERS") && !theRole.hasPermission("MANAGE_CHANNELS") && !theRole.hasPermission("MANAGE_GUILD") && !theRole.hasPermission("MANAGE_MESSAGES") && !theRole.hasPermission("MUTE_MEMBERS") && !theRole.hasPermission("DEAFEN_MEMBERS") && !theRole.hasPermission("MOVE_MEMBERS") && !theRole.hasPermission("MANAGE_NICKNAMES") && !theRole.hasPermission("MANAGE_ROLES") && !theRole.hasPermission("MANAGE_WEBHOOKS") && !theRole.hasPermission("MANAGE_EMOJIS")) {
+                        message.member.addRole(`${theRole.id}`);
+                        message.channel.send(`${message.author}, you have been given the totally awesome ${theRole} role.`);
+                    } else {
+                        message.channel.send(`${message.author}, that role's permissions are too far out. Try something else.`);
+                    }*/ message.channel.send(`Try making a custom role, dude.`);
+                }
             }
         }
         const remaRole = (rolNm) => {
