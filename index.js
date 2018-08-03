@@ -43,7 +43,7 @@ bot.on("message", message => {
                     value: `${comList[0] + "\n" + comList[1] + "\n" + comList[2]}`
                 }, {
                     name: "Links:",
-                    value: "[Invite to your server](https://discordapp.com/api/oauth2/authorize?client_id=459784010445619210&permissions=872676417&scope=bot) \n [Support server for this bot and others made by SuperNunb](https://discord.gg/A9HnryA) \n [GitHub repository](https://github.com/SuperNunb/BeachBot)"
+                    value: `[Invite to your server](${surf.invite}) \n [Support server for this bot and others made by SuperNunb](https://discord.gg/A9HnryA) \n [GitHub repository](https://github.com/SuperNunb/BeachBot)`
                 }],
                 timestamp: new Date()
             }});
