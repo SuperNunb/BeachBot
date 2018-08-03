@@ -3,6 +3,7 @@ const surf = require('./surf.json');
 const fs = require("fs");
 const token = process.env.token;
 const prefix = surf.prefix;
+const comList = surf.comList;
 const guildList = surf.guildList;
 const bot = new Discord.Client();
 bot.login(token);
@@ -19,7 +20,8 @@ bot.on("error", err => {
 });
 
 bot.on("message", message => {
-    if (message.guild.me.hasPermission("SEND_MESSAGES")) {
+    if (message.channel.type == "dm") return;
+    else if (message.guild.me.hasPermission("SEND_MESSAGES")) {
         const invite = () => {message.author.send(surf.invite)}
         if (message.content.startsWith(prefix + "invite")) invite();
         if (message.content.startsWith(prefix + "join")) invite();
@@ -27,11 +29,25 @@ bot.on("message", message => {
 });
 
 bot.on("message", message => {
-    if (message.guild.me.hasPermission("SEND_MESSAGES")) {
+    if (message.channel.type == "dm") return;
+    else if (message.guild.me.hasPermission("SEND_MESSAGES")) {
         const intro = () => {
-            message.author.send(surf.intro);
             message.channel.send(`I sent a letter far out to you, ${message.author}`);
-        }
+            if (message.channel.type == "dm") return;
+            message.author.send({embed: {
+                color: 3447003,
+                description: `${surf.intro}`,
+                title: "HELP HAS ARRIVED!",
+                fields: [{
+                    name: `Commands:`,
+                    value: `${comList[0] + "\n" + comList[1] + "\n" + comList[2]}`
+                }, {
+                    name: "Links:",
+                    value: "[Invite to your server](https://discordapp.com/api/oauth2/authorize?client_id=459784010445619210&permissions=872676417&scope=bot) \n [Support server for this bot and others made by SuperNunb](https://discord.gg/A9HnryA) \n [GitHub repository](https://github.com/SuperNunb/BeachBot)"
+                }],
+                timestamp: new Date()
+            }});
+        };
         const suBe = (blueSky) => {
             if (message.author.id != "459784010445619210") {
                 message.channel.send(`Did someone say ${blueSky}?`);
@@ -60,7 +76,8 @@ bot.on("message", message => {
 });
 
 bot.on("message", message => {
-    if (message.guild.me.hasPermission("SEND_MESSAGES") && message.guild.me.hasPermission("MANAGE_ROLES")) {
+    if (message.channel.type == "dm") return;
+    else if (message.guild.me.hasPermission("SEND_MESSAGES") && message.guild.me.hasPermission("MANAGE_ROLES")) {
         let colRand1 = Math.floor(Math.random() * 255 + 1);
         let colRand2 = Math.floor(Math.random() * 255 + 1);
         let colRand3 = Math.floor(Math.random() * 255 + 1);
