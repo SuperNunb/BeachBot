@@ -100,12 +100,7 @@ bot.on("message", message => {
                 } else if (message.member.roles.has(theRole.id)) {
                     message.channel.send(`You already have that role, ${message.author}, dude.`);
                 } else {
-                    /*if (!theRole.hasPermission("ADMINISTRATOR") && !theRole.hasPermission("KICK_MEMBERS") && !theRole.hasPermission("BAN_MEMBERS") && !theRole.hasPermission("MANAGE_CHANNELS") && !theRole.hasPermission("MANAGE_GUILD") && !theRole.hasPermission("MANAGE_MESSAGES") && !theRole.hasPermission("MUTE_MEMBERS") && !theRole.hasPermission("DEAFEN_MEMBERS") && !theRole.hasPermission("MOVE_MEMBERS") && !theRole.hasPermission("MANAGE_NICKNAMES") && !theRole.hasPermission("MANAGE_ROLES") && !theRole.hasPermission("MANAGE_WEBHOOKS") && !theRole.hasPermission("MANAGE_EMOJIS")) {
-                        message.member.addRole(`${theRole.id}`);
-                        message.channel.send(`${message.author}, you have been given the totally awesome ${theRole} role.`);
-                    } else {
-                        message.channel.send(`${message.author}, that role's permissions are too far out. Try something else.`);
-                    }*/ message.channel.send(`Try making a custom role, dude.`);
+                    message.channel.send(`Try making a custom role, dude.`);
                 }
             }
         }
