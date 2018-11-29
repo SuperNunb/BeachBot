@@ -118,23 +118,13 @@ bot.on("message", message => {
         }
         const roleList = () => {
             if (message.channel.type == "dm") return;
-            if (message.member.hasPermission("MENTION_EVERYONE")) {
-                let rLO = [];
-                message.guild.roles.forEach(rolly => {
-                    if (rolly.name == '@everyone') rLO.push(`@everyone`);
-                    else rLO.push(`@${rolly.name}`);
-                });
-                message.channel.send(`I've got the full list of roles in this server right here, dude.`);
-                message.channel.send(rLO.join("\n"));
-            } else {
-                let rLO = [];
+            let rLO = [];
                 message.guild.roles.forEach(rolly => {
                     if (rolly.name == 'everyone') return;
                     else rLO.push(`@${rolly.name}`);
                 });
                 message.channel.send(`I've got the full list of roles in this server right here, dude. Except the everyone tag, of course.`);
                 message.channel.send(rLO.join("\n"));
-            }
         }
         if (message.content.startsWith(`${prefix}add`) && message.member.hasPermission("MANAGE_ROLES")) {
             if (message.content.length <= (prefix.length + 3)) {
