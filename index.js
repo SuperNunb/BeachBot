@@ -122,7 +122,7 @@ bot.on("message", message => {
                 let rLO = [];
                 message.guild.roles.forEach(rolly => {
                     if (rolly.name == '@everyone') rLO.push(`@everyone`);
-                    else rLO.push(`<@&${rolly.id}>`);
+                    else rLO.push(`<@&${rolly.name}>`);
                 });
                 message.channel.send(`I've got the full list of roles in this server right here, dude.`);
                 message.channel.send(rLO.join("\n"));
