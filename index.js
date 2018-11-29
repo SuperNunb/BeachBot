@@ -120,7 +120,7 @@ bot.on("message", message => {
             if (message.channel.type == "dm") return;
             let rLO = [];
                 message.guild.roles.forEach(rolly => {
-                    if (rolly.name == 'everyone') return;
+                    if (rolly.name == '@everyone') return;
                     else rLO.push(`@${rolly.name}`);
                 });
                 message.channel.send(`I've got the full list of roles in this server right here, dude. Except the everyone tag, of course.`);
